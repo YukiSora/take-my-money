@@ -18,12 +18,11 @@ class MainActivity : AppCompatActivity() {
 
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
-            override fun getItem(position: Int): Fragment? {
+            override fun getItem(position: Int): Fragment {
                 return when(position) {
                     0 -> SpecialFragment.newInstance()
                     1 -> GamesFragment.newInstance()
-                    2 -> SettingFragment.newInstance()
-                    else -> null
+                    else -> SettingFragment.newInstance()
                 }
             }
 
