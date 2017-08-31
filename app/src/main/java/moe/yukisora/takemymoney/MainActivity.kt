@@ -69,15 +69,15 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.special_item -> {
-                    viewPager.setCurrentItem(0, true)
+                    viewPager.currentItem = 0
                     true
                 }
                 R.id.games_item -> {
-                    viewPager.setCurrentItem(1, true)
+                    viewPager.currentItem = 1
                     true
                 }
                 R.id.setting_item -> {
-                    viewPager.setCurrentItem(2, true)
+                    viewPager.currentItem = 2
                     true
                 }
                 else -> false

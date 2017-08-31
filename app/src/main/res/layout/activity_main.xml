@@ -33,6 +33,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPager"
+        app:itemBackground="@drawable/bottom_navigation_item_ripple"
+        app:itemTextColor="@drawable/bottom_navigation_item_selector"
+        app:itemIconTint="@drawable/bottom_navigation_item_selector"
         app:menu="@menu/bottom_navigation_menu" />
 
 </android.support.constraint.ConstraintLayout>

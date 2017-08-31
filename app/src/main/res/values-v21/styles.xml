@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <style
@@ -10,6 +11,7 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:windowBackground">@color/windowBackground</item>
-    </style>
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
 
+    </style>
 </resources>
