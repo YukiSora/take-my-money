@@ -6,7 +6,7 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/steam"/>
+            android:src="@drawable/ic_steam"/>
     </item>
 
 </layer-list>

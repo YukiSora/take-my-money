@@ -4,15 +4,15 @@
 
     <item
         android:id="@+id/special_item"
-        android:icon="@drawable/special"
+        android:icon="@drawable/ic_special"
         android:title="Speical" />
     <item
         android:id="@+id/games_item"
-        android:icon="@drawable/games"
+        android:icon="@drawable/ic_games"
         android:title="Games" />
     <item
         android:id="@+id/setting_item"
-        android:icon="@drawable/setting"
+        android:icon="@drawable/ic_setting"
         android:title="Setting" />
 
 </menu>
