@@ -20,6 +20,7 @@ class SpecialFragment : Fragment() {
             return fragment
         }
     }
+
     private lateinit var adapter: SpecialRecyclerViewAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var specials: ArrayList<SpecialData>
@@ -29,7 +30,7 @@ class SpecialFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.fragment_special, container, false)
+        val view = inflater.inflate(R.layout.fragment_special, container, false)
 
         specials = ArrayList()
 
