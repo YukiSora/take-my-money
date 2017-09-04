@@ -1,4 +1,4 @@
-package moe.yukisora.takemymoney
+package moe.yukisora.takemymoney.activities
 
 import android.app.Activity
 import android.content.Intent
@@ -9,7 +9,7 @@ class SplashActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val intent = Intent("moe.yukisora.takemymoney.MainActivity")
+        val intent = Intent("moe.yukisora.takemymoney.activities.MainActivity")
         startActivity(intent)
         finish()
     }

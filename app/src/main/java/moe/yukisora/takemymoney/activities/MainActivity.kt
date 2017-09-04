@@ -1,4 +1,4 @@
-package moe.yukisora.takemymoney
+package moe.yukisora.takemymoney.activities
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
@@ -7,6 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import moe.yukisora.takemymoney.fragments.GamesFragment
+import moe.yukisora.takemymoney.R
+import moe.yukisora.takemymoney.fragments.SettingFragment
+import moe.yukisora.takemymoney.fragments.SpecialFragment
 
 class MainActivity : AppCompatActivity() {
     companion object {

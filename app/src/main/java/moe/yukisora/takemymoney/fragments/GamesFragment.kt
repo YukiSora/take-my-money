@@ -1,16 +1,17 @@
-package moe.yukisora.takemymoney
+package moe.yukisora.takemymoney.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import moe.yukisora.takemymoney.R
 
-class SettingFragment : Fragment() {
+class GamesFragment : Fragment() {
     companion object {
-        fun newInstance(): SettingFragment {
+        fun newInstance(): GamesFragment {
             val args = Bundle()
-            val fragment = SettingFragment()
+            val fragment = GamesFragment()
             fragment.arguments = args
 
             return fragment
@@ -22,6 +23,6 @@ class SettingFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_setting, container, false)
+        return inflater.inflate(R.layout.fragment_games, container, false)
     }
 }

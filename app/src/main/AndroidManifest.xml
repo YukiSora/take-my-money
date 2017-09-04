@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
-                <action android:name="moe.yukisora.takemymoney.MainActivity" />
+                <action android:name="moe.yukisora.takemymoney.activities.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

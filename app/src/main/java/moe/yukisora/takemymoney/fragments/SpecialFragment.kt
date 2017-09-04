@@ -1,4 +1,4 @@
-package moe.yukisora.takemymoney
+package moe.yukisora.takemymoney.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +12,9 @@ import android.view.ViewGroup
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import moe.yukisora.takemymoney.R
+import moe.yukisora.takemymoney.models.SpecialModel
+import moe.yukisora.takemymoney.adapters.SpecialRecyclerViewAdapter
 
 class SpecialFragment : Fragment() {
     companion object {
@@ -27,7 +30,7 @@ class SpecialFragment : Fragment() {
     private lateinit var adapter: SpecialRecyclerViewAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var refreshLayout: SmartRefreshLayout
-    private lateinit var specials: ArrayList<SpecialData>
+    private lateinit var specials: ArrayList<SpecialModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +71,7 @@ class SpecialFragment : Fragment() {
     }
 
     private fun initData() {
-        for (i in 1..10) specials.add(SpecialData("Poi"))
+        for (i in 1..10) specials.add(SpecialModel("Poi"))
         adapter.notifyDataSetChanged()
     }
 }
