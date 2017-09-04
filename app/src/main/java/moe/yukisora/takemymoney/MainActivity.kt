@@ -13,9 +13,9 @@ class MainActivity : AppCompatActivity() {
         const val PAGER_COUNT = 3
     }
 
-    private lateinit var viewPager: ViewPager;
-    private lateinit var toolbar: Toolbar;
-    private lateinit var bottomNavigationView: BottomNavigationView;
+    private lateinit var viewPager: ViewPager
+    private lateinit var toolbar: Toolbar
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

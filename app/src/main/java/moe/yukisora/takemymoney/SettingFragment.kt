@@ -11,7 +11,7 @@ class SettingFragment : Fragment() {
         fun newInstance(): SettingFragment {
             val args = Bundle()
             val fragment = SettingFragment()
-            fragment.arguments = args;
+            fragment.arguments = args
 
             return fragment
         }

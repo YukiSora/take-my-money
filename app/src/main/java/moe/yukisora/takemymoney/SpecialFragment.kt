@@ -9,13 +9,16 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
+import com.scwang.smartrefresh.layout.header.ClassicsHeader
 
 class SpecialFragment : Fragment() {
     companion object {
         fun newInstance(): SpecialFragment {
             val args = Bundle()
             val fragment = SpecialFragment()
-            fragment.arguments = args;
+            fragment.arguments = args
 
             return fragment
         }
@@ -23,6 +26,7 @@ class SpecialFragment : Fragment() {
 
     private lateinit var adapter: SpecialRecyclerViewAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var refreshLayout: SmartRefreshLayout
     private lateinit var specials: ArrayList<SpecialData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,13 +45,26 @@ class SpecialFragment : Fragment() {
     }
 
     private fun initView(view: View) {
+        // recycler view
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        adapter = SpecialRecyclerViewAdapter(specials)
-        recyclerView.adapter = adapter
         val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(activity, R.drawable.divider_item))
         recyclerView.addItemDecoration(divider)
+        adapter = SpecialRecyclerViewAdapter(specials)
+        recyclerView.adapter = adapter
+
+        // refresh layout
+        refreshLayout = view.findViewById(R.id.refreshLayout)
+        refreshLayout.setPrimaryColorsId(R.color.windowBackground, R.color.loadingColor)
+        refreshLayout.refreshHeader = ClassicsHeader(activity)
+        refreshLayout.refreshFooter = ClassicsFooter(activity)
+        refreshLayout.setOnRefreshListener {
+            refreshLayout.finishRefresh(2000)
+        }
+        refreshLayout.setOnLoadmoreListener {
+            refreshLayout.finishLoadmore(2000)
+        }
     }
 
     private fun initData() {
