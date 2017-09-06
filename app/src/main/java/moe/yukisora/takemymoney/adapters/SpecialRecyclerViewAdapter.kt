@@ -20,10 +20,14 @@ class SpecialRecyclerViewAdapter(private val specials: ArrayList<SpecialModel>) 
     override fun getItemCount(): Int = specials.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val textView: TextView = view.findViewById(R.id.textView)
+        private val name: TextView = view.findViewById(R.id.name)
+        private val discount: TextView = view.findViewById(R.id.discount)
+        private val price: TextView = view.findViewById(R.id.price)
 
         internal fun bindData(specials: SpecialModel) {
-            textView.text = specials.name
+            name.text = specials.name
+            discount.text = specials.discount
+            price.text = specials.price
         }
     }
 }

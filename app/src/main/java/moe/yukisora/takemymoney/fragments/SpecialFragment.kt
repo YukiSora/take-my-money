@@ -12,9 +12,17 @@ import android.view.ViewGroup
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.experimental.CommonPool
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.async
+import kotlinx.coroutines.experimental.run
 import moe.yukisora.takemymoney.R
-import moe.yukisora.takemymoney.models.SpecialModel
 import moe.yukisora.takemymoney.adapters.SpecialRecyclerViewAdapter
+import moe.yukisora.takemymoney.models.SpecialModel
+import moe.yukisora.takemymoney.networks.GetSpecials
+
 
 class SpecialFragment : Fragment() {
     companion object {
@@ -71,7 +79,26 @@ class SpecialFragment : Fragment() {
     }
 
     private fun initData() {
-        for (i in 1..10) specials.add(SpecialModel("Poi"))
-        adapter.notifyDataSetChanged()
+        GetSpecials.getSpecials(object : Observer<ArrayList<SpecialModel>> {
+            override fun onSubscribe(d: Disposable) {
+            }
+
+            override fun onNext(specials: ArrayList<SpecialModel>) {
+                async(CommonPool) {
+                    run(UI) {
+                        val startPosition = this@SpecialFragment.specials.size
+                        val endPosition = startPosition + specials.size
+                        this@SpecialFragment.specials.addAll(specials)
+                        adapter.notifyItemRangeInserted(startPosition, endPosition)
+                    }
+                }
+            }
+
+            override fun onError(e: Throwable) {
+            }
+
+            override fun onComplete() {
+            }
+        })
     }
 }
