@@ -62,7 +62,7 @@ class SpecialFragment : Fragment() {
         val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
         divider.setDrawable(ContextCompat.getDrawable(activity, R.drawable.divider_item))
         recyclerView.addItemDecoration(divider)
-        adapter = SpecialRecyclerViewAdapter(specials)
+        adapter = SpecialRecyclerViewAdapter(activity, specials)
         recyclerView.adapter = adapter
 
         // refresh layout
