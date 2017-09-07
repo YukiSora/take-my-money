@@ -1,14 +1,17 @@
 package moe.yukisora.takemymoney.models
 
+import java.util.*
+
 data class SpecialModel(
         val appid: String,
         val name: String,
         val logoUrl: String,
         val category: String,
-        val discount: String,
-        val price: String,
+        val discount: Double,
+        val price: Double,
+        val originPrice: Double,
         val score: String,
-        val endDate: String,
-        val startDate: String,
-        val releaseDate: String
+        val endDate: Date?,
+        val startDate: Date?,
+        val releaseDate: Date?
 )

@@ -12,6 +12,9 @@
     <color name="itemColor">#16202D</color>
     <color name="itemColorSelect">#101822</color>
 
+    <color name="specialColor">#A4D007</color>
+    <color name="specialBackgroundColor">#4C6B22</color>
+
     <color name="bottomColor">#2A475E</color>
     <color name="bottomColorSelected">#B8DAEE</color>
     <color name="bottomColorPressed">#000000</color>

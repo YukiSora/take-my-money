@@ -1,6 +1,7 @@
 package moe.yukisora.takemymoney.adapters
 
 import android.content.Context
+import android.graphics.Paint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import moe.yukisora.takemymoney.R
 import moe.yukisora.takemymoney.models.SpecialModel
+import java.text.DecimalFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+
 
 class SpecialRecyclerViewAdapter(private val context: Context, private val specials: ArrayList<SpecialModel>) : RecyclerView.Adapter<SpecialRecyclerViewAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,13 +32,19 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
         private val logo: ImageView = view.findViewById(R.id.logo)
         private val name: TextView = view.findViewById(R.id.name)
         private val discount: TextView = view.findViewById(R.id.discount)
+        private val originPrice: TextView = view.findViewById(R.id.originPrice)
         private val price: TextView = view.findViewById(R.id.price)
+        private val endDate: TextView = view.findViewById(R.id.endDate)
 
         fun bindData(special: SpecialModel) {
             loadImage(special)
             name.text = special.name
-            discount.text = special.discount
-            price.text = special.price
+            name.isSelected = true
+            discount.text = DecimalFormat("#%").format(special.discount)
+            originPrice.text = DecimalFormat("$#0.00").format(special.originPrice)
+            originPrice.paintFlags = originPrice.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            price.text = DecimalFormat("$#0.00").format(special.price)
+            endDate.text = leftTime(special)
         }
 
         private fun loadImage(special: SpecialModel) {
@@ -50,6 +61,21 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
                             logo.setOnClickListener { loadImage(special) }
                         }
                     })
+        }
+
+        private fun leftTime(special: SpecialModel): String {
+            return if (special.endDate != null) {
+                val currentDate = Date()
+                val diff = special.endDate.time - currentDate.time
+                val hours = TimeUnit.HOURS.convert(diff, TimeUnit.MILLISECONDS)
+                if (hours >= 24) {
+                    "${(hours / 24).toInt()} 天"
+                } else {
+                    "$hours 小时"
+                }
+            } else {
+                "-"
+            }
         }
     }
 }
