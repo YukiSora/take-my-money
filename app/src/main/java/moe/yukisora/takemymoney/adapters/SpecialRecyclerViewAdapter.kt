@@ -31,6 +31,7 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val score: TextView = view.findViewById(R.id.score)
+        private val category: TextView = view.findViewById(R.id.category)
         private val logo: ImageView = view.findViewById(R.id.logo)
         private val name: TextView = view.findViewById(R.id.name)
         private val discount: TextView = view.findViewById(R.id.discount)
@@ -45,6 +46,15 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
                 in 71 .. 100 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.goodBackgroundColor, null))
             }
             score.text = special.score
+            when(special.category) {
+                "Midweek Madness" -> category.text = "周中疯狂"
+                "Weeklong Deals" -> category.text = "一周特惠"
+                "Pre-Purchase" -> category.text = "预购特惠"
+                "Daily Deal" -> category.text = "每日特惠"
+                "" -> category.visibility = View.INVISIBLE
+                "Special Promotion" -> category.text = "特别促销"
+                else -> category.text = "主题特惠"
+            }
             loadImage(special)
             name.text = special.name
             name.isSelected = true

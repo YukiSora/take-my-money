@@ -38,6 +38,17 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:background="@android:color/darker_gray"
+            android:textSize="10sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/score" />
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
