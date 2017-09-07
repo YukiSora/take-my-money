@@ -15,6 +15,10 @@
     <color name="specialColor">#A4D007</color>
     <color name="specialBackgroundColor">#4C6B22</color>
 
+    <color name="goodBackgroundColor">#4191BF</color>
+    <color name="normalBackgroundColor">#A8926A</color>
+    <color name="badBackgroundColor">#A34C25</color>
+
     <color name="bottomColor">#2A475E</color>
     <color name="bottomColorSelected">#B8DAEE</color>
     <color name="bottomColorPressed">#000000</color>

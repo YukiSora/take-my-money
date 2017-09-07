@@ -2,6 +2,7 @@ package moe.yukisora.takemymoney.adapters
 
 import android.content.Context
 import android.graphics.Paint
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,7 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
     override fun getItemCount(): Int = specials.size
 
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        private val score: TextView = view.findViewById(R.id.score)
         private val logo: ImageView = view.findViewById(R.id.logo)
         private val name: TextView = view.findViewById(R.id.name)
         private val discount: TextView = view.findViewById(R.id.discount)
@@ -37,6 +39,12 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
         private val endDate: TextView = view.findViewById(R.id.endDate)
 
         fun bindData(special: SpecialModel) {
+            when ((DecimalFormat("#%").parse(special.score).toDouble() * 100).toInt()) {
+                in 0 .. 50 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.badBackgroundColor, null))
+                in 51 .. 70 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.normalBackgroundColor, null))
+                in 71 .. 100 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.goodBackgroundColor, null))
+            }
+            score.text = special.score
             loadImage(special)
             name.text = special.name
             name.isSelected = true
