@@ -8,6 +8,7 @@ data class SpecialModel(
         val logoUrl: String,
         val category: String,
         val discount: Double,
+        val higherDiscount: Boolean,
         val price: Double,
         val originPrice: Double,
         val score: String,

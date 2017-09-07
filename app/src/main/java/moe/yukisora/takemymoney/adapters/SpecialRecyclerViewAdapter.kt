@@ -32,6 +32,7 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
     inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val score: TextView = view.findViewById(R.id.score)
         private val category: TextView = view.findViewById(R.id.category)
+        private val higherDiscount: TextView = view.findViewById(R.id.higherDiscount)
         private val logo: ImageView = view.findViewById(R.id.logo)
         private val name: TextView = view.findViewById(R.id.name)
         private val discount: TextView = view.findViewById(R.id.discount)
@@ -40,12 +41,16 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
         private val endDate: TextView = view.findViewById(R.id.endDate)
 
         fun bindData(special: SpecialModel) {
-            when ((DecimalFormat("#%").parse(special.score).toDouble() * 100).toInt()) {
-                in 0 .. 50 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.badBackgroundColor, null))
-                in 51 .. 70 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.normalBackgroundColor, null))
-                in 71 .. 100 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.goodBackgroundColor, null))
+            if (special.score != "") {
+                when ((DecimalFormat("#%").parse(special.score).toDouble() * 100).toInt()) {
+                    in 0..50 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.badBackgroundColor, null))
+                    in 51..70 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.normalBackgroundColor, null))
+                    in 71..100 -> score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.goodBackgroundColor, null))
+                }
+                score.text = special.score
+            } else {
+                score.setBackgroundColor(ResourcesCompat.getColor(context.resources, android.R.color.darker_gray, null))
             }
-            score.text = special.score
             when(special.category) {
                 "Midweek Madness" -> category.text = "周中疯狂"
                 "Weeklong Deals" -> category.text = "一周特惠"
@@ -54,6 +59,11 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
                 "" -> category.visibility = View.INVISIBLE
                 "Special Promotion" -> category.text = "特别促销"
                 else -> category.text = "主题特惠"
+            }
+            if (!special.higherDiscount) {
+                higherDiscount.visibility = View.INVISIBLE
+            } else {
+                higherDiscount.visibility = View.VISIBLE
             }
             loadImage(special)
             name.text = special.name

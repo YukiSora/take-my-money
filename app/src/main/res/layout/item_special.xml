@@ -32,8 +32,10 @@
             android:id="@+id/score"
             android:layout_width="30dp"
             android:layout_height="0dp"
+            android:text="-"
             android:gravity="center"
             android:textColor="@android:color/black"
+            android:background="@android:color/darker_gray"
             android:textSize="10sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -48,6 +50,18 @@
             android:textSize="10sp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/score" />
+
+        <TextView
+            android:id="@+id/higherDiscount"
+            android:layout_width="30dp"
+            android:layout_height="0dp"
+            android:text="史低"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:background="@android:color/holo_red_dark"
+            android:textSize="10sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/category" />
 
     </android.support.constraint.ConstraintLayout>
 

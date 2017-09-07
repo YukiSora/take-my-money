@@ -31,6 +31,7 @@ object GetSpecials {
             val logoUrl = "https://steamdb.info/static/camo/apps/$appid/capsule_sm_120.jpg"
             val name = td[2].select("a").first().text()
             val category = td[2].select("span.category").first()?.text() ?: ""
+            val higherDiscount = td[2].select("span.highest-discount-major").first() != null
             val discount = DecimalFormat("#%").parse(td[3].text()).toDouble()
             val price = DecimalFormat("#.00").parse(td[4].text().substring(1)).toDouble()
             val originPrice = DecimalFormat("#.00").format(price / (1 + discount)).toDouble()
@@ -42,7 +43,7 @@ object GetSpecials {
             val releaseDateString = td[8].attr("title")
             val releaseDate = if (releaseDateString.isNotEmpty()) dateFormat.parse(releaseDateString) else null
 
-            SpecialModel(appid, name, logoUrl, category, discount, price, originPrice, score, endDate, startDate, releaseDate)
+            SpecialModel(appid, name, logoUrl, category, discount, higherDiscount, price, originPrice, score, endDate, startDate, releaseDate)
         }
 
         return specials
