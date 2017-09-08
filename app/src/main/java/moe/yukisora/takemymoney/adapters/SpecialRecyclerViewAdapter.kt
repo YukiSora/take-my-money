@@ -49,7 +49,7 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
                 }
                 score.text = special.score
             } else {
-                score.setBackgroundColor(ResourcesCompat.getColor(context.resources, android.R.color.darker_gray, null))
+                score.setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.infoBackgroundColor, null))
             }
             when(special.category) {
                 "Midweek Madness" -> category.text = "周中疯狂"
@@ -97,9 +97,9 @@ class SpecialRecyclerViewAdapter(private val context: Context, private val speci
                 val diff = special.endDate.time - currentDate.time
                 val hours = TimeUnit.HOURS.convert(diff, TimeUnit.MILLISECONDS)
                 if (hours >= 24) {
-                    "${(hours / 24).toInt()} 天"
+                    "剩余 ${(hours / 24).toInt()} 天"
                 } else {
-                    "$hours 小时"
+                    "剩余 $hours 小时"
                 }
             } else {
                 "-"

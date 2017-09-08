@@ -6,6 +6,7 @@
     <color name="textColorPrimary">#C8C5C3</color>
     <color name="textColorSecondary">#60B3E5</color>
     <color name="textColor">#C8C5C3</color>
+    <color name="blackTextColor">#000000</color>
 
     <color name="windowBackground">#1B2838</color>
 
@@ -15,9 +16,11 @@
     <color name="specialColor">#A4D007</color>
     <color name="specialBackgroundColor">#4C6B22</color>
 
-    <color name="goodBackgroundColor">#4191BF</color>
-    <color name="normalBackgroundColor">#A8926A</color>
-    <color name="badBackgroundColor">#A34C25</color>
+    <color name="goodBackgroundColor">#CC4191BF</color>
+    <color name="normalBackgroundColor">#CCA8926A</color>
+    <color name="badBackgroundColor">#CCA34C25</color>
+    <color name="infoBackgroundColor">#CC666666</color>
+    <color name="lowerBackgroundColor">#CCF0544C</color>
 
     <color name="bottomColor">#2A475E</color>
     <color name="bottomColorSelected">#B8DAEE</color>
