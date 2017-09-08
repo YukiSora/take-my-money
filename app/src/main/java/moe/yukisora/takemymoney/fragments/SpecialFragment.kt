@@ -10,7 +10,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.scwang.smartrefresh.layout.header.ClassicsHeader
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
@@ -69,13 +68,10 @@ class SpecialFragment : Fragment() {
         refreshLayout = view.findViewById(R.id.refreshLayout)
         refreshLayout.setPrimaryColorsId(R.color.windowBackground, R.color.loadingColor)
         refreshLayout.refreshHeader = ClassicsHeader(activity)
-        refreshLayout.refreshFooter = ClassicsFooter(activity)
         refreshLayout.setOnRefreshListener {
             refreshLayout.finishRefresh(2000)
         }
-        refreshLayout.setOnLoadmoreListener {
-            refreshLayout.finishLoadmore(2000)
-        }
+        refreshLayout.isEnableLoadmore = false
     }
 
     private fun initData() {
