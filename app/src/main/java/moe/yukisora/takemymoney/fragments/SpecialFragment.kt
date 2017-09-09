@@ -49,7 +49,7 @@ class SpecialFragment : Fragment() {
         specials = ArrayList()
 
         initView(view)
-        initData()
+        refreshLayout.autoRefresh()
 
         return view
     }
@@ -69,7 +69,13 @@ class SpecialFragment : Fragment() {
         refreshLayout.setPrimaryColorsId(R.color.windowBackground, R.color.loadingColor)
         refreshLayout.refreshHeader = ClassicsHeader(activity)
         refreshLayout.setOnRefreshListener {
-            refreshLayout.finishRefresh(2000)
+            async(CommonPool) {
+                run(UI) {
+                    specials.clear()
+                    adapter.notifyDataSetChanged()
+                }
+            }
+            initData()
         }
         refreshLayout.isEnableLoadmore = false
     }
@@ -82,10 +88,9 @@ class SpecialFragment : Fragment() {
             override fun onNext(specials: ArrayList<SpecialModel>) {
                 async(CommonPool) {
                     run(UI) {
-                        val startPosition = this@SpecialFragment.specials.size
-                        val endPosition = startPosition + specials.size
                         this@SpecialFragment.specials.addAll(specials)
-                        adapter.notifyItemRangeInserted(startPosition, endPosition)
+                        adapter.notifyDataSetChanged()
+                        refreshLayout.finishRefresh()
                     }
                 }
             }
